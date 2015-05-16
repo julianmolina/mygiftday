@@ -4,6 +4,6 @@
 		<title>Phalcon PHP Framework</title>
 	</head>
 	<body>
-		{{ content() }}
+		<?php echo $this->getContent(); ?>
 	</body>
 </html>
