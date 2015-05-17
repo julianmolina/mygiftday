@@ -14,7 +14,7 @@ public class SqlLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE user (id INTEGER, id_facebook INTEGER, id_event INTEGER)");
+        db.execSQL("CREATE TABLE user (id INTEGER, id_user integer, id_facebook INTEGER, id_event INTEGER)");
     }
 
     @Override

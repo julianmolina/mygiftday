@@ -40,6 +40,7 @@ class IndexController extends ControllerBase
 
 		$checkUser = User::findFirst("id_facebook = ".$info->id_facebook);
 		if ($checkUser == false) {
+
 			$user->id_facebook 	= $info->id_facebook;
 			$user->name			= $info->name;
 			$user->last			= $info->last;
@@ -54,10 +55,10 @@ class IndexController extends ControllerBase
 					echo json_encode($item->getMessage());
 				}
 			} else {
-				echo "1";
+				echo $user->id_user;
 			}
 		} else {
-			echo "1";
+			echo $checkUser->id_user;
 		}
 	}
 
@@ -69,7 +70,8 @@ class IndexController extends ControllerBase
 		$info = array();
 		$info = $this->request->getJsonRawBody();
 
-		$checkUser = Event::findFirst("id_event_type = ".$info->id_event_type . "and id_user = ".$info->id_user . "and date = '".$info->date."'");
+		//$checkUser = Event::findFirst("id_event_type = ".$info->id_event_type . "and id_user = ".$info->id_user . "and date = '".$info->date."'");
+        $checkUser = false;
 		if ($checkUser == false) {
 			$contribution->id_event_type 	= $info->id_event_type;
 			$contribution->id_user 			= $info->id_user;

@@ -28,7 +28,7 @@
                 style="?android:attr/progressBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/progressBar2" />
+                android:id="@+id/progressBar" />
 
         </LinearLayout>
 
@@ -40,7 +40,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="28sp"
+                android:textSize="20sp"
                 android:textColor="#424242"
                 android:text="¿Que quieres?"
                 android:id="@+id/textView4" />
@@ -71,7 +71,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="28sp"
+                android:textSize="20sp"
                 android:textColor="#424242"
                 android:text="Tu regalo"
                 android:id="@+id/textViewsd" />
@@ -109,7 +109,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="28sp"
+                android:textSize="20sp"
                 android:textColor="#424242"
                 android:text="Evento social"
                 android:id="@+id/textView3" />
@@ -125,7 +125,7 @@
             <Spinner
                 android:layout_width="180dp"
                 android:background="@drawable/text_shape"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:id="@+id/spinner"
                 android:layout_weight="1" />
 
@@ -146,7 +146,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="28sp"
+                android:textSize="20sp"
                 android:textColor="#424242"
                 android:text="Fecha del evento"
                 android:id="@+id/textView5" />
@@ -185,7 +185,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="28sp"
+                android:textSize="20sp"
                 android:textColor="#424242"
                 android:text="Monto inicial"
                 android:id="@+id/textView43" />
@@ -223,7 +223,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="28sp"
+                android:textSize="20sp"
                 android:textColor="#424242"
                 android:text="Valor del item"
                 android:id="@+id/textView2" />

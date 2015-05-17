@@ -56,7 +56,7 @@ public class ChooseActivity extends FragmentActivity {
         setContentView(R.layout.activity_choose);
         new FetchAutocomplete().execute();
 
-        EditText edt = (EditText) findViewById(R.id.editText2);
+        EditText edt = (EditText) findViewById(R.id.edtDate);
         edt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +66,7 @@ public class ChooseActivity extends FragmentActivity {
 
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.UK);
-                        EditText edt = (EditText) findViewById(R.id.editText2);
+                        EditText edt = (EditText) findViewById(R.id.edtDate);
                         Calendar newDate = Calendar.getInstance();
                         newDate.set(year, monthOfYear, dayOfMonth);
                         edt.setText(dateFormatter.format(newDate.getTime()));
@@ -129,21 +129,21 @@ public class ChooseActivity extends FragmentActivity {
 
             try {
 
-                HttpPost httpPost = new HttpPost(URL_INSERT_CLIENT);
+                HttpPost httpPost = new HttpPost("http://54.148.104.160/mygiftday/api/index/insertevent");
                 DefaultHttpClient httpclient = new DefaultHttpClient();
                 HttpResponse httpResponse;
 
                 SqlLiteHelper usdbh = new SqlLiteHelper(ChooseActivity.this, "user", null, 1);
                 SQLiteDatabase db = usdbh.getWritableDatabase();
 
-                Cursor status_bar = db.rawQuery("SELECT id_facebook FROM user where id = 1", null);
-                int fb_id = 0;
-                if (status_bar.moveToFirst()) {
+                //Cursor status_bar = db.rawQuery("SELECT id_facebook FROM user where id = 1", null);
+                int fb_id = 39029023;
+                /**if (status_bar.moveToFirst()) {
                     do {
                         String id = status_bar.getString(1);
                         fb_id = Integer.parseInt(id);
                     } while(status_bar.moveToNext());
-                }
+                }**/
 
                 EditText url = (EditText) findViewById(R.id.edtUrl);
                 EditText iwant = (EditText) findViewById(R.id.edtIwant);
@@ -160,6 +160,7 @@ public class ChooseActivity extends FragmentActivity {
                 jsonObject.accumulate("amount", amount.getText().equals("") ? "" : amount.getText());
                 jsonObject.accumulate("value_product", value.getText().equals("") ? "" : value.getText());
                 json = jsonObject.toString();
+                Log.e("jjsjaksja", json);
 
                 StringEntity se = new StringEntity(json);
                 httpPost.setEntity(se);
@@ -179,9 +180,8 @@ public class ChooseActivity extends FragmentActivity {
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
             this.progressBar.setVisibility(View.GONE);
-            usdbh = new SqlLiteHelper(ChooseActivity.this, "user", null, 1);
-            db = usdbh.getWritableDatabase();
-            Intent service = new Intent(ChooseActivity.this, Search.class);
+            Log.e("lkdlasklda", this.respuesta);
+            Intent service = new Intent(ChooseActivity.this, Gift.class);
             startActivity(service);
         }
     }
@@ -197,7 +197,7 @@ public class ChooseActivity extends FragmentActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            
+
             try {
 
                 String url = "http://54.148.104.160/mygiftday/api/index/eventos";

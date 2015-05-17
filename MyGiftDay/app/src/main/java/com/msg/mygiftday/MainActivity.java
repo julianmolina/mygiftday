@@ -52,6 +52,7 @@ public class MainActivity extends FragmentActivity {
     private final Bundle bParams = new Bundle();
 
     public MainActivity() {
+
     }
 
     @Override
@@ -191,7 +192,7 @@ public class MainActivity extends FragmentActivity {
             this.progressBar.setVisibility(View.GONE);
             SqlLiteHelper usdbh = new SqlLiteHelper(MainActivity.this, "user", null, 1);
             SQLiteDatabase db = usdbh.getWritableDatabase();
-            db.execSQL("INSERT INTO user (id, id_facebook) VALUES (1, "+bParams.getString("id_facebook")+")");
+            db.execSQL("INSERT INTO user (id, id_facebook, id_user) VALUES (1, "+bParams.getString("id_facebook")+", "+this.respuesta+")");
             Intent service = new Intent(MainActivity.this, Search.class);
             startActivity(service);
         }
