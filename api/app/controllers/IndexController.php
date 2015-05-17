@@ -57,24 +57,24 @@ class IndexController extends ControllerBase
 		}
 	}
 	
-	public function InsertGiftAction()
+	public function InsertgiftAction()
 	{
 		$contribution = new Contribution();
 		$info = array();
 		$info = $this->request->getJsonRawBody();
 		
-		$checkUser = Contribution::findFirst("id_facebook = ".$info->id_facebook);
+		$checkUser = Contribution::findFirst("id_user = ".$info->id_user . "and id_event = ".$info->id_event . "and date = '".$info->date."'");
 		if ($checkUser == false) {
-			$user->id_facebook 	= $info->id_facebook;
-			$user->name			= $info->name;
-			$user->last			= $info->last;
-			$user->email		= $info->email;
-			$user->birthday		= $info->birthday;
-			$user->status		= 1;
-			$user->update		= date("Y-m-d H:m:s");
-			$user->register_date= date("Y-m-d H:m:s");
+			$contribution->id_user 	= $info->id_user;
+			$contribution->id_event			= $info->id_event;
+			$contribution->id_bonus			= $info->id_bonus;
+			$contribution->message		= $info->message;
+			$contribution->date		= $info->date;
+			$contribution->status		= 1;
+			$contribution->update		= date("Y-m-d H:m:s");
+			$contribution->register_date= date("Y-m-d H:m:s");
 			
-			if ($user->save() == false) {
+			if ($contribution->save() == false) {
 				foreach ($user->getMessages() as $item) {
 					echo json_encode($item->getMessage());
 				}

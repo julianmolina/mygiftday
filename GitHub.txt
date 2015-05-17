@@ -1,0 +1,14 @@
+para subir
+
+git add .
+
+git commit -m "mensaje"
+
+git push origin master
+
+
+
+
+para bajar
+
+git pull
