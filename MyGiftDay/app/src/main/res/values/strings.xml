@@ -9,5 +9,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_search">Search</string>
     <string name="title_activity_search_events">SearchEvents</string>
+    <string name="title_activity_gift">Gift</string>
 
 </resources>

@@ -26,8 +26,8 @@ public class Search extends FragmentActivity {
             }
         });
 
-        ImageView img2 = (ImageView) findViewById(R.id.img1);
-        img1.setOnClickListener(new View.OnClickListener() {
+        ImageView img2 = (ImageView) findViewById(R.id.img2);
+        img2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Search.this, SearchEvents.class);

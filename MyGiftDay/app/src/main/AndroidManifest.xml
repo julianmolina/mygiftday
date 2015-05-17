@@ -53,7 +53,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -75,6 +74,10 @@
             android:label="@string/title_activity_search_events"
             android:screenOrientation="portrait"
             android:theme="@style/AppBaseTheme" >
+        </activity>
+        <activity
+            android:name=".Gift"
+            android:label="@string/title_activity_gift" >
         </activity>
     </application>
 

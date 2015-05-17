@@ -189,6 +189,9 @@ public class MainActivity extends FragmentActivity {
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
             this.progressBar.setVisibility(View.GONE);
+            SqlLiteHelper usdbh = new SqlLiteHelper(MainActivity.this, "user", null, 1);
+            SQLiteDatabase db = usdbh.getWritableDatabase();
+            db.execSQL("INSERT INTO user (id, id_facebook) VALUES (1, "+bParams.getString("id_facebook")+")");
             Intent service = new Intent(MainActivity.this, Search.class);
             startActivity(service);
         }
