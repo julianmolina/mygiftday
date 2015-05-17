@@ -1,20 +1,56 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/bgcontent"
+    tools:context="com.msg.mygiftday.Search">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal|center_vertical"
         android:layout_weight="1">
 
-        <ProgressBar
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|clip_vertical"
+        android:layout_weight="0.1">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_launcher"
+            android:id="@+id/img1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|clip_vertical"
+        android:layout_weight="1">
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/progressBar" />
+            android:text="Mis regalos"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#424242"
+            android:id="@+id/textView2" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
 
     </LinearLayout>
 
@@ -27,24 +63,24 @@
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/ic_launcher"
-            android:id="@+id/imageView"
-            android:layout_gravity="center_vertical" />
+            android:src="@drawable/user"
+            android:id="@+id/img2" />
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal|center_vertical"
-        android:layout_weight="0.1">
+        android:gravity="center_horizontal|clip_vertical"
+        android:layout_weight="1">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/title_activity_main"
-            android:textSize="42dp"
+            android:text="Regalos de amigos"
+            android:textSize="20dp"
             android:textStyle="bold"
-            android:textColor="#ffffff"
+            android:textColor="#424242"
             android:id="@+id/textView" />
 
     </LinearLayout>
@@ -52,31 +88,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal|top"
         android:layout_weight="1">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal|top"
-            android:text="All give and all receive"
-            android:textSize="22sp"
-            android:textColor="#ffffff"
-            android:id="@+id/textView2" />
-
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal|top"
-        android:layout_weight="1">
-
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/login_button"
-            android:layout_width="200dp"
-            android:layout_height="50dp" />
-
-    </LinearLayout>
-
 </LinearLayout>
