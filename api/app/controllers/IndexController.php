@@ -57,22 +57,29 @@ class IndexController extends ControllerBase
 		}
 	}
 	
-	public function InsertgiftAction()
+	
+	
+	public function InserteventAction()
 	{
-		$contribution = new Contribution();
+		$event = new Event();
 		$info = array();
 		$info = $this->request->getJsonRawBody();
 		
-		$checkUser = Contribution::findFirst("id_user = ".$info->id_user . "and id_event = ".$info->id_event . "and date = '".$info->date."'");
+		$checkUser = Event::findFirst("id_event_type = ".$info->id_event_type . "and id_user = ".$info->id_user . "and date = '".$info->date."'");
 		if ($checkUser == false) {
-			$contribution->id_user 	= $info->id_user;
-			$contribution->id_event			= $info->id_event;
-			$contribution->id_bonus			= $info->id_bonus;
-			$contribution->message		= $info->message;
-			$contribution->date		= $info->date;
-			$contribution->status		= 1;
-			$contribution->update		= date("Y-m-d H:m:s");
-			$contribution->register_date= date("Y-m-d H:m:s");
+			$contribution->id_event_type 	= $info->id_event_type;
+			$contribution->id_user 			= $info->id_user;
+			$contribution->id_product		= $info->id_product;
+			$contribution->url				= $info->url;
+			$contribution->iwant			= $info->iwant;
+			$contribution->date				= $info->date;
+			$contribution->amount			= $info->amount;
+			$contribution->value_product	= $info->value_product;
+			$contribution->first_amount		= $info->first_amount;
+			$contribution->last_date		= $info->last_date;
+			$contribution->status			= 1;
+			$contribution->register_date	= date("Y-m-d H:m:s");
+			$contribution->update			= date("Y-m-d H:m:s");
 			
 			if ($contribution->save() == false) {
 				foreach ($user->getMessages() as $item) {
@@ -84,6 +91,52 @@ class IndexController extends ControllerBase
 		} else {
 			echo "1";
 		}
+	}		
+	
+	
+	
+	
+	public function InsertcontributionAction()
+	{
+		$contribution = new Contribution();
+		$info = array();
+		$info = $this->request->getJsonRawBody();
+		
+		$contribution->id_user 	= $info->id_user;
+		$contribution->id_event			= $info->id_event;
+		$contribution->id_bonus			= $info->id_bonus;
+		$contribution->date		= $info->date;
+		$contribution->status		= 1;
+		$contribution->update		= date("Y-m-d H:m:s");
+		$contribution->register_date= date("Y-m-d H:m:s");
+			
+		if ($contribution->save() == false) {
+			foreach ($user->getMessages() as $item) {
+				echo json_encode($item->getMessage());
+			}
+		} else {
+			echo "1";
+		}
 	}	
+	
+	
+	public function UpdatecontributionAction()
+	{
+
+		$info = array();
+		$info = $this->request->getJsonRawBody();
+		$contribution = Contribution::findFirst($info->id_contribution);
+		$contribution->message 	= $info->message;
+			
+		if ($contribution->save() == false) {
+			foreach ($user->getMessages() as $item) {
+				echo json_encode($item->getMessage());
+			}
+		} else {
+			echo "1";
+		}
+	}
+	
+	
 	
 }
