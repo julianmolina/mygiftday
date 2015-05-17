@@ -1,25 +1,29 @@
 <?php
 
 /**
- * 
+ *
  */
 class IndexController extends ControllerBase
 {
     public function indexAction()
     {
-		$array = array();
-		foreach (Bonus::find('amount = 5000') as $item) { 
+        $array = array();
+		foreach (User::find() as $item) {
 			$array[] = array(
-				'amount' => $item->amount
+				'id_facebook' => $item->id_facebook,
+                "name" => $item->name,
+                "last" => $item->last,
+                "email" => $item->email,
+                "birthday" => $item->birthday
 			);
 		}
 		echo json_encode($array);
     }
-	
+
 	public function eventosAction()
 	{
 		$array = array();
-		foreach (EventType::find() as $item) { 
+		foreach (EventType::find() as $item) {
 			$array[] = array(
 				'id_event_type' => $item->id_event_type,
 				'event_type' => $item->event_type
@@ -33,7 +37,7 @@ class IndexController extends ControllerBase
 		$user = new User();
 		$info = array();
 		$info = $this->request->getJsonRawBody();
-		
+
 		$checkUser = User::findFirst("id_facebook = ".$info->id_facebook);
 		if ($checkUser == false) {
 			$user->id_facebook 	= $info->id_facebook;
@@ -44,7 +48,7 @@ class IndexController extends ControllerBase
 			$user->status		= 1;
 			$user->update		= date("Y-m-d H:m:s");
 			$user->register_date= date("Y-m-d H:m:s");
-			
+
 			if ($user->save() == false) {
 				foreach ($user->getMessages() as $item) {
 					echo json_encode($item->getMessage());
@@ -56,15 +60,15 @@ class IndexController extends ControllerBase
 			echo "1";
 		}
 	}
-	
-	
-	
+
+
+
 	public function InserteventAction()
 	{
 		$event = new Event();
 		$info = array();
 		$info = $this->request->getJsonRawBody();
-		
+
 		$checkUser = Event::findFirst("id_event_type = ".$info->id_event_type . "and id_user = ".$info->id_user . "and date = '".$info->date."'");
 		if ($checkUser == false) {
 			$contribution->id_event_type 	= $info->id_event_type;
@@ -80,7 +84,7 @@ class IndexController extends ControllerBase
 			$contribution->status			= 1;
 			$contribution->register_date	= date("Y-m-d H:m:s");
 			$contribution->update			= date("Y-m-d H:m:s");
-			
+
 			if ($contribution->save() == false) {
 				foreach ($user->getMessages() as $item) {
 					echo json_encode($item->getMessage());
@@ -91,17 +95,17 @@ class IndexController extends ControllerBase
 		} else {
 			echo "1";
 		}
-	}		
-	
-	
-	
-	
+	}
+
+
+
+
 	public function InsertcontributionAction()
 	{
 		$contribution = new Contribution();
 		$info = array();
 		$info = $this->request->getJsonRawBody();
-		
+
 		$contribution->id_user 	= $info->id_user;
 		$contribution->id_event			= $info->id_event;
 		$contribution->id_bonus			= $info->id_bonus;
@@ -109,25 +113,7 @@ class IndexController extends ControllerBase
 		$contribution->status		= 1;
 		$contribution->update		= date("Y-m-d H:m:s");
 		$contribution->register_date= date("Y-m-d H:m:s");
-			
-		if ($contribution->save() == false) {
-			foreach ($user->getMessages() as $item) {
-				echo json_encode($item->getMessage());
-			}
-		} else {
-			echo "1";
-		}
-	}	
-	
-	
-	public function UpdatecontributionAction()
-	{
 
-		$info = array();
-		$info = $this->request->getJsonRawBody();
-		$contribution = Contribution::findFirst($info->id_contribution);
-		$contribution->message 	= $info->message;
-			
 		if ($contribution->save() == false) {
 			foreach ($user->getMessages() as $item) {
 				echo json_encode($item->getMessage());
@@ -136,7 +122,25 @@ class IndexController extends ControllerBase
 			echo "1";
 		}
 	}
-	
-	
-	
+
+
+	public function UpdatecontributionAction()
+	{
+
+		$info = array();
+		$info = $this->request->getJsonRawBody();
+		$contribution = Contribution::findFirst($info->id_contribution);
+		$contribution->message 	= $info->message;
+
+		if ($contribution->save() == false) {
+			foreach ($user->getMessages() as $item) {
+				echo json_encode($item->getMessage());
+			}
+		} else {
+			echo "1";
+		}
+	}
+
+
+
 }
